@@ -16,8 +16,19 @@
 
 package uk.gov.hmrc.api.specs
 
+import org.scalatest._
+import org.scalatest.concurrent.Eventually
 import org.scalatest.featurespec.AnyFeatureSpec
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.GivenWhenThen
+import uk.gov.hmrc.api.helpers.{AuthHelper, DELETERequestsHelper, GETRequestsHelper, OverviewHelper, POSTRequestsHelper, PUTRequestsHelper, VersionHelper}
 
-trait BaseSpec extends AnyFeatureSpec with GivenWhenThen with Matchers {}
+trait BaseSpec extends AnyFeatureSpec with GivenWhenThen with BeforeAndAfterAll with Matchers with Eventually {
+  val authHelper           = new AuthHelper
+  val overviewHelper       = new OverviewHelper
+  val versionHelper        = new VersionHelper
+  val POSTRequestsHelper   = new POSTRequestsHelper
+  val PUTRequestsHelper    = new PUTRequestsHelper
+  val GETRequestsHelper    = new GETRequestsHelper
+  val DELETERequestsHelper = new DELETERequestsHelper
+
+}
