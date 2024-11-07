@@ -18,8 +18,9 @@ package uk.gov.hmrc.api.client
 
 import org.apache.pekko.actor.ActorSystem
 import play.api.libs.ws.DefaultBodyWritables._
-import play.api.libs.ws.{DefaultWSProxyServer, StandaloneWSRequest, StandaloneWSResponse}
+import play.api.libs.ws.StandaloneWSRequest
 import play.api.libs.ws.ahc.StandaloneAhcWSClient
+import play.api.libs.ws.DefaultWSProxyServer
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -39,19 +40,23 @@ trait HttpClient {
       standAloneWsRequest
     }
 
-  def get(url: String, headers: (String, String)*): Future[StandaloneWSResponse] =
+  def get(url: String, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
     standAloneWsRequestWithProxyIfConfigSet(wsClient.url(url))
       .withHttpHeaders(headers: _*)
       .get()
 
-  def post(url: String, bodyAsJson: String, headers: (String, String)*): Future[StandaloneWSResponse] =
+  def post(url: String, bodyAsJson: String, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
     standAloneWsRequestWithProxyIfConfigSet(wsClient.url(url))
       .withHttpHeaders(headers: _*)
       .post(bodyAsJson)
 
-  def delete(url: String, headers: (String, String)*): Future[StandaloneWSResponse] =
+  def delete(url: String, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
     standAloneWsRequestWithProxyIfConfigSet(wsClient.url(url))
       .withHttpHeaders(headers: _*)
       .delete()
 
+  def put(url: String, bodyAsJson: String, headers: (String, String)*): Future[StandaloneWSRequest#Self#Response] =
+    standAloneWsRequestWithProxyIfConfigSet(wsClient.url(url))
+      .withHttpHeaders(headers: _*)
+      .put(bodyAsJson)
 }
