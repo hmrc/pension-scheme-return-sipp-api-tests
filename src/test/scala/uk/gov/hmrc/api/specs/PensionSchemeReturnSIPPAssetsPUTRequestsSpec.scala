@@ -18,7 +18,7 @@ package uk.gov.hmrc.api.specs
 
 import uk.gov.hmrc.api.service.PensionSchemeReturnSippPUTRequestService
 
-class PensionSchemeReturnSIPPPUTRequestsSpec extends BaseSpec {
+class PensionSchemeReturnSIPPAssetsPUTRequestsSpec extends BaseSpec {
 
   val pensionSchemeReturnSippPUTServiceAPI: PensionSchemeReturnSippPUTRequestService =
     new PensionSchemeReturnSippPUTRequestService
