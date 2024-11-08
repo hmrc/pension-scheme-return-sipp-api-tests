@@ -18,7 +18,7 @@ package uk.gov.hmrc.api.specs
 
 import uk.gov.hmrc.api.service.PensionSchemeReturnSippDELETERequestService
 
-class PensionSchemeReturnSIPPDELETERequestsSpec extends BaseSpec {
+class PensionSchemeReturnSIPPDELETEMemberRequestsSpec extends BaseSpec {
 
   val pensionSchemeReturnSippDELETEServiceAPI: PensionSchemeReturnSippDELETERequestService =
     new PensionSchemeReturnSippDELETERequestService
@@ -37,17 +37,17 @@ class PensionSchemeReturnSIPPDELETERequestsSpec extends BaseSpec {
 
     Scenario("Verify 200 response when Delete request to Update record") {
       Then("200 response is expected when updating details of asset class")
-      DELETERequestsHelper.deleteFullBodyRequestEndpoint(authBearerToken, payload)
+      DELETERequestsHelper.deleteFullBodyRequestEndpoint(authBearerToken, payload, "delete-member")
     }
 
     Scenario("401 Unauthorized error when DELETE request to Update details without token") {
       Then("401 response is expected when updating details of asset class")
-      DELETERequestsHelper.deleteUnauthorizedRequestEndpoint("", payload)
+      DELETERequestsHelper.deleteUnauthorizedRequestEndpoint("", payload, "delete-member")
     }
 
     Scenario("400 Server error when DELETE request to Update without payload") {
       Then("400 response is expected when updating details of asset class")
-      DELETERequestsHelper.deleteNoBodyRequestEndpoint(authBearerToken, "")
+      DELETERequestsHelper.deleteNoBodyRequestEndpoint(authBearerToken, "", "delete-member")
     }
   }
 }

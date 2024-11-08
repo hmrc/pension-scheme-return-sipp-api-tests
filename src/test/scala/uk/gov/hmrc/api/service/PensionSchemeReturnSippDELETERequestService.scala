@@ -27,10 +27,21 @@ class PensionSchemeReturnSippDELETERequestService extends HttpClient {
   val host: String   = TestConfiguration.url("pension-scheme-return-sipp")
   val psrURL: String = s"$host/psr"
 
-  def deleteStandardPSR(authToken: String, payload: String): StandaloneWSRequest#Self#Response =
+  def deleteStandardPSR(authToken: String, payload: String, action: String): StandaloneWSRequest#Self#Response =
     Await.result(
       put(
-        s"$psrURL/delete-member/24000020IN?fbNumber=000000021224&journeyType=Standard",
+        s"$psrURL/$action/24000020IN?fbNumber=000000021224&journeyType=Standard",
+        payload,
+        ("Authorization", authToken),
+        ("Content-Type", "application/json")
+      ),
+      10.seconds
+    )
+
+  def deleteAsset(authToken: String, payload: String, action: String): StandaloneWSRequest#Self#Response =
+    Await.result(
+      put(
+        s"$psrURL/$action/24000020IN?fbNumber=000000021224&journeyType=Standard&journey=ArmsLengthLandOrProperty",
         payload,
         ("Authorization", authToken),
         ("Content-Type", "application/json")

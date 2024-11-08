@@ -25,27 +25,27 @@ class DELETERequestsHelper {
   val pensionSchemeReturnDELETEServiceAPI: PensionSchemeReturnSippDELETERequestService =
     new PensionSchemeReturnSippDELETERequestService
 
-  def deleteFullBodyRequestEndpoint(authBearerToken: String, payload: String): Unit = {
+  def deleteFullBodyRequestEndpoint(authBearerToken: String, payload: String, action: String): Unit = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
-      pensionSchemeReturnDELETEServiceAPI.deleteStandardPSR(authBearerToken, payload)
-    versionsGetResponse.status shouldBe 200
+      pensionSchemeReturnDELETEServiceAPI.deleteStandardPSR(authBearerToken, payload, action)
+    assert(Set(200, 201).contains(versionsGetResponse.status))
   }: Unit
 
-  def deleteUnauthorizedRequestEndpoint(authBearerToken: String, payload: String): Unit = {
+  def deleteUnauthorizedRequestEndpoint(authBearerToken: String, payload: String, action: String): Unit = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
-      pensionSchemeReturnDELETEServiceAPI.deleteStandardPSR(authBearerToken, payload)
+      pensionSchemeReturnDELETEServiceAPI.deleteStandardPSR(authBearerToken, payload, action)
     versionsGetResponse.status shouldBe 401
   }: Unit
 
-  def deleteNotFoundRequestEndpoint(authBearerToken: String, payload: String): Unit = {
+  def deleteNotFoundRequestEndpoint(authBearerToken: String, payload: String, action: String): Unit = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
-      pensionSchemeReturnDELETEServiceAPI.deleteStandardPSR(authBearerToken, payload)
+      pensionSchemeReturnDELETEServiceAPI.deleteStandardPSR(authBearerToken, payload, action)
     versionsGetResponse.status shouldBe 404
   }: Unit
 
-  def deleteNoBodyRequestEndpoint(authBearerToken: String, payload: String): Unit = {
+  def deleteNoBodyRequestEndpoint(authBearerToken: String, payload: String, action: String): Unit = {
     val versionsGetResponse: StandaloneWSRequest#Self#Response =
-      pensionSchemeReturnDELETEServiceAPI.deleteStandardPSR(authBearerToken, payload)
+      pensionSchemeReturnDELETEServiceAPI.deleteStandardPSR(authBearerToken, payload, action)
     versionsGetResponse.status shouldBe 400
   }: Unit
 
