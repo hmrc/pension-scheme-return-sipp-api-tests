@@ -32,7 +32,8 @@ class PensionSchemeReturnSIPPAssetsPUTRequestsSpec extends BaseSpec {
       |    "periodStart": "2023-01-01",
       |    "periodEnd": "2023-12-31",
       |    "schemeName": "Sample Scheme Name",
-      |    "version": "1.0"
+      |    "version": "1.0",
+      |    "memberTransactions": "Yes"
       |  },
       |  "transactions": [
       |      {
