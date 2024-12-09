@@ -32,7 +32,8 @@ class PensionSchemeReturnSIPPArmsPUTRequestsSpec extends BaseSpec {
       |    "status": "Compiled",
       |    "periodEnd": "2023-04-05",
       |    "periodStart": "2022-04-06",
-      |    "schemeName": "Open Scheme 2"
+      |    "schemeName": "Open Scheme 2",
+      |    "memberTransactions": "Yes"
       |  },
       |  "transactions": [
       |    {
