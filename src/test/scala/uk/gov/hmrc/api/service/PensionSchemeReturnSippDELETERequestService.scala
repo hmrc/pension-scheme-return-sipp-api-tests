@@ -33,7 +33,8 @@ class PensionSchemeReturnSippDELETERequestService extends HttpClient {
         s"$psrURL/$action/24000020IN?fbNumber=000000021224&journeyType=Standard",
         payload,
         ("Authorization", authToken),
-        ("Content-Type", "application/json")
+        ("Content-Type", "application/json"),
+        ("srn", "S2400000020")
       ),
       10.seconds
     )

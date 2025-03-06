@@ -32,7 +32,8 @@ class PensionSchemeReturnSippGETRequestService extends HttpClient {
       get(
         s"$psrURL/$assetClass/24000020IN?fbNumber=000000021224",
         ("Authorization", authToken),
-        ("Content-Type", "application/json")
+        ("Content-Type", "application/json"),
+        ("srn", "S2400000020")
       ),
       10.seconds
     )
