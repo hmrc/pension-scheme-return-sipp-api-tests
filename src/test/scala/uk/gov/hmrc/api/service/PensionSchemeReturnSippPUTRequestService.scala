@@ -33,7 +33,8 @@ class PensionSchemeReturnSippPUTRequestService extends HttpClient {
         s"$psrURL/$assetClass?journeyType=Standard&fbNumber=000000021224",
         payload,
         ("Authorization", authToken),
-        ("Content-Type", "application/json")
+        ("Content-Type", "application/json"),
+        ("srn", "S2400000020")
       ),
       10.seconds
     )
